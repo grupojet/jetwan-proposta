@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>JetWan × SpaceX</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#0B0B0B;--card:#181C1F;--m:#A7A9AC;--jet:#FF6600;--sx:#5BA3C9}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#000;color:#fff;font-family:Inter,system-ui,sans-serif;overflow:hidden}
+.slide{display:none;height:100%;padding:56px 56px 72px;background:var(--bg);flex-direction:column}
+.slide.on{display:flex}
+h2{font-size:36px;letter-spacing:-.03em}
+.lede{color:var(--m);margin:10px 0 22px;font-size:17px}
+.grid{display:grid;gap:12px;flex:1}
+.g2{grid-template-columns:1fr 1fr}.g4{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--card);border:1px solid #222;border-radius:12px;padding:18px}
+.card.jet{border-color:var(--jet)}.card.sx{border-color:#005288}
+.num{color:var(--jet);font-size:28px;font-weight:600}
+.chrome{display:flex;justify-content:space-between;color:var(--m);font-size:12px;letter-spacing:.12em;margin-bottom:18px}
+.chrome b{color:var(--jet)}.sx{color:var(--sx)}
+.kicker{color:var(--jet);letter-spacing:.18em;font-size:12px;font-weight:600}
+.nav{position:fixed;right:20px;bottom:18px;display:flex;gap:8px}
+.nav button{height:36px;padding:0 14px;border:0;border-radius:8px;font-weight:600;cursor:pointer}
+.w{background:#fff}.g{background:#333;color:#fff}
+iframe{flex:1;border:0;border-radius:12px;background:#000;min-height:320px}
+@media(max-width:800px){.g2,.g4{grid-template-columns:1fr}.slide{padding:40px 20px 72px}}
+</style>
+</head>
+<body>
+<section class="slide on">
+  <p class="kicker">GRUPO JET × SPACEX · CONFIDENCIAL</p>
+  <h2 style="font-size:64px;margin-top:12px">JetWan</h2>
+  <p class="lede">Permuta de serviços + transporte no backbone Starlink. Fibra no chão. Constelação no céu. Um único IP na saída.</p>
+</section>
+<section class="slide">
+  <div class="chrome"><span><b>GRUPO JET</b> × <span class="sx">SPACEX</span></span><span>02</span></div>
+  <h2>Agenda</h2>
+  <div class="grid g2">
+    <div class="card"><span class="num">01</span><h3>Produto</h3><p>SD-WAN fibra + Starlink com IP persistente.</p></div>
+    <div class="card"><span class="num">02</span><h3>Permuta</h3><p>Encontro de contas. Jet no chão, SpaceX no céu.</p></div>
+    <div class="card"><span class="num">03</span><h3>Malha</h3><p>KMZ, OPGW BSB–Palmas, 30 edges e IA.</p></div>
+    <div class="card"><span class="num">04</span><h3>Demanda</h3><p>Caixa 12.934 PAs. Órgãos e bancos.</p></div>
+  </div>
+</section>
+<section class="slide">
+  <div class="chrome"><span><b>GRUPO JET</b> × <span class="sx">SPACEX</span></span><span>03</span></div>
+  <h2>O produto</h2>
+  <p class="lede">SD-WAN com fibra no primário, Starlink no secundário, VPN cifrada e o mesmo IP — inclusive no failover.</p>
+  <div class="grid g4">
+    <div class="card"><h3>SD-WAN</h3><p>Caminho por aplicação.</p></div>
+    <div class="card"><h3>Backup LEO</h3><p>Sobe quando a fibra cai.</p></div>
+    <div class="card"><h3>VPN</h3><p>Underlay não vê o payload.</p></div>
+    <div class="card"><h3>IP fixo</h3><p>Nunca o CGNAT.</p></div>
+  </div>
+</section>
+<section class="slide">
+  <div class="chrome"><span><b>GRUPO JET</b> × <span class="sx">SPACEX</span></span><span>04</span></div>
+  <h2>A permuta</h2>
+  <div class="grid g2">
+    <div class="card jet"><h3>Grupo Jet</h3><p>Campo, comodato, NOC, contrato e porta em órgãos e bancos.</p></div>
+    <div class="card sx"><h3>SpaceX / Starlink</h3><p>Transporte na constelação. NNI em Brasília e São Paulo.</p></div>
+  </div>
+</section>
+<section class="slide">
+  <div class="chrome"><span><b>GRUPO JET</b> × <span class="sx">SPACEX</span></span><span>05</span></div>
+  <h2>Malha + OPGW</h2>
+  <p class="lede">Brasília → Serra da Mesa → Gurupi → Palmas.</p>
+  <iframe src="malha.html" title="Malha"></iframe>
+</section>
+<section class="slide">
+  <div class="chrome"><span><b>GRUPO JET</b> × <span class="sx">SPACEX</span></span><span>06</span></div>
+  <h2>30 edges + IA</h2>
+  <div class="grid g2">
+    <div class="card jet"><span class="num">30</span><h3>Edge DCs</h3><p>Conteúdo perto da ponta.</p></div>
+    <div class="card"><h3>Estação de IA</h3><p>Inteligência artificial crescendo na malha.</p></div>
+  </div>
+</section>
+<section class="slide">
+  <div class="chrome"><span><b>GRUPO JET</b> × <span class="sx">SPACEX</span></span><span>07</span></div>
+  <h2>Caixa</h2>
+  <div class="grid g4">
+    <div class="card"><span class="num">12.934</span><p>PAs</p></div>
+    <div class="card"><span class="num">8</span><p>Lotes</p></div>
+    <div class="card"><span class="num">60</span><p>Meses</p></div>
+    <div class="card"><span class="num">2</span><p>Links</p></div>
+  </div>
+</section>
+<section class="slide">
+  <div class="chrome"><span><b>GRUPO JET</b> × <span class="sx">SPACEX</span></span><span>08</span></div>
+  <h2>Como fechar</h2>
+  <div class="grid g4">
+    <div class="card"><span class="num">01</span><h3>NNI</h3><p>BSB e SP.</p></div>
+    <div class="card"><span class="num">02</span><h3>Piloto 90 dias</h3><p>Órgão, banco, agro.</p></div>
+    <div class="card"><span class="num">03</span><h3>Contas</h3><p>Jet no chão. SpaceX no céu.</p></div>
+    <div class="card"><span class="num">04</span><h3>Rateio</h3><p>CAPEX e receita.</p></div>
+  </div>
+</section>
+<section class="slide">
+  <p class="kicker">MENSAGEM FINAL</p>
+  <h2 style="font-size:48px;margin-top:12px">Fibra no chão.<br>Starlink no céu.<br>Um único IP na saída.</h2>
+</section>
+<div class="nav">
+  <button class="g" id="prev">Anterior</button>
+  <button class="w" id="next">Próximo</button>
+</div>
+<script>
+const S=[...document.querySelectorAll('.slide')]; let i=0;
+const go=n=>{i=Math.max(0,Math.min(S.length-1,n));S.forEach((s,k)=>s.classList.toggle('on',k===i));};
+document.getElementById('next').onclick=()=>go(i+1);
+document.getElementById('prev').onclick=()=>go(i-1);
+document.addEventListener('keydown',e=>{
+  if(['ArrowRight',' ','PageDown'].includes(e.key)){e.preventDefault();go(i+1);}
+  if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(i-1);}
+});
+</script>
+</body>
+</html>
