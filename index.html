@@ -3,42 +3,228 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>JetWan × SpaceX — Proposta confidencial</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <title>JetWan — Grupo Jet × SpaceX</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    body{margin:0;font-family:Inter,system-ui,sans-serif;background:#000;color:#fff}
-    a{color:inherit;text-decoration:none}
-    .wrap{width:min(880px,calc(100% - 48px));margin:0 auto;padding:72px 0 80px}
-    .k{letter-spacing:.2em;font-size:12px;color:#FF6600;font-weight:600}
-    h1{font-size:clamp(40px,8vw,72px);letter-spacing:-.04em;margin:12px 0}
-    p{color:#b7b7c0;font-size:18px;line-height:1.55}
-    .row{display:flex;gap:10px;flex-wrap:wrap;margin:28px 0}
-    .btn{display:inline-flex;align-items:center;height:42px;padding:0 18px;border-radius:8px;font-weight:600}
-    .w{background:#fff;color:#111}
-    .g{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15)}
-    .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:36px}
-    .card{background:#111;border:1px solid #222;border-radius:12px;padding:20px}
-    .card h3{margin:0 0 8px}
-    .card p{font-size:14px;margin:0}
-    @media(max-width:700px){.grid{grid-template-columns:1fr}}
+    :root {
+      --bg: #050505; --ink: #f4f4f5; --mute: #9a9aa3; --line: rgba(255,255,255,.1);
+      --jet: #FF6600; --sx: #7eb6d4; --card: #0e0e10;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: Inter, system-ui, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.55; }
+    a { color: inherit; text-decoration: none; }
+    nav {
+      position: fixed; inset: 0 0 auto; z-index: 20;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 18px 36px; background: linear-gradient(#000c, transparent);
+    }
+    nav.on { background: #000c; backdrop-filter: blur(16px); border-bottom: 1px solid var(--line); }
+    .brand { letter-spacing: .32em; font-size: 12px; font-weight: 600; }
+    nav a { font-size: 13px; color: #cfcfd6; margin-left: 22px; }
+    .btn {
+      display: inline-flex; align-items: center; height: 42px; padding: 0 18px;
+      border-radius: 999px; font-size: 14px; font-weight: 500;
+      transition: transform .25s ease, background .25s ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-w { background: #fff; color: #111; }
+    .btn-g { border: 1px solid var(--line); color: #fff; }
+    .hero {
+      min-height: 100vh; display: grid; place-items: end start;
+      padding: 0 8vw 12vh;
+      background:
+        radial-gradient(1200px 600px at 80% -10%, #1a3a55 0%, transparent 55%),
+        radial-gradient(900px 500px at 10% 110%, #3a1a08 0%, transparent 50%),
+        #050505;
+    }
+    .k { color: var(--jet); letter-spacing: .22em; font-size: 12px; font-weight: 600; }
+    h1 { font-size: clamp(48px, 8vw, 92px); font-weight: 500; letter-spacing: -.045em; line-height: .95; margin: 14px 0 18px; }
+    .lede { max-width: 640px; color: var(--mute); font-size: 18px; font-weight: 300; }
+    .actions { display: flex; gap: 10px; margin-top: 28px; flex-wrap: wrap; }
+    section { padding: 96px 8vw; }
+    .wrap { width: min(1120px, 100%); margin: 0 auto; }
+    h2 { font-size: clamp(28px, 4vw, 44px); font-weight: 500; letter-spacing: -.03em; margin: 10px 0 14px; }
+    .grid { display: grid; gap: 14px; }
+    .g2 { grid-template-columns: 1fr 1fr; }
+    .g3 { grid-template-columns: repeat(3, 1fr); }
+    .g4 { grid-template-columns: repeat(4, 1fr); }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 22px; }
+    .card h3 { font-size: 17px; margin-bottom: 8px; }
+    .card p { color: var(--mute); font-size: 14px; }
+    .stat { font-size: 36px; font-weight: 600; letter-spacing: -.03em; color: #fff; }
+    .jet { border-color: #ff660055; }
+    .sx { border-color: #5ba3c955; }
+    ol.steps { list-style: none; margin-top: 28px; }
+    ol.steps li { display: grid; grid-template-columns: 48px 1fr; gap: 16px; padding: 18px 0; border-top: 1px solid var(--line); }
+    ol.steps b { color: var(--jet); }
+    footer { padding: 40px 8vw 64px; color: #666; font-size: 13px; border-top: 1px solid var(--line); }
+    @media (max-width: 800px) {
+      nav { padding: 14px 18px; }
+      nav .hide { display: none; }
+      .g2, .g3, .g4 { grid-template-columns: 1fr; }
+      section { padding: 72px 22px; }
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <p class="k">GRUPO JET × SPACEX · CONFIDENCIAL</p>
-    <h1>JetWan</h1>
-    <p>Fibra no chão. Starlink no céu. Um único IP na saída. Permuta de serviços: o Grupo Jet opera o campo no Brasil; a SpaceX transporta na constelação.</p>
-    <div class="row">
-      <a class="btn w" href="apresentacao.html">Abrir apresentação</a>
-      <a class="btn g" href="https://github.com/grupojet/jetwan-proposta">Repositório</a>
-    </div>
-    <div class="grid">
-      <div class="card"><h3>Produto</h3><p>SD-WAN com fibra primária, Starlink no backup e VPN com IP persistente.</p></div>
-      <div class="card"><h3>Permuta</h3><p>Jet no chão. SpaceX no céu. Interconexão em Brasília e São Paulo.</p></div>
-      <div class="card"><h3>Malha + edge</h3><p>KMZ da fibra, OPGW BSB–Palmas, 30 edge DCs e estação de IA.</p></div>
-      <div class="card"><h3>Pipeline</h3><p>Caixa ~12.934 PAs, 8 lotes, 60 meses. Órgãos e bancos já na porta.</p></div>
-    </div>
-    <p style="margin-top:48px;font-size:13px">Documento de trabalho. Não é parceria anunciada nem endosso da SpaceX.</p>
+<nav>
+  <div class="brand">JETWAN</div>
+  <div>
+    <a class="hide" href="#produto">Produto</a>
+    <a class="hide" href="#permuta">Permuta</a>
+    <a class="hide" href="#malha">Malha</a>
+    <a class="hide" href="#caixa">Demanda</a>
+    <a class="btn btn-w" href="apresentacao.html" style="margin-left:18px">Apresentação</a>
   </div>
+</nav>
+<header class="hero">
+  <div>
+    <p class="k">GRUPO JET × SPACEX · PROPOSTA CONFIDENCIAL</p>
+    <h1>Fibra no chão.<br>Starlink no céu.<br>Um único IP.</h1>
+    <p class="lede">JetWan é SD-WAN com fibra óptica no primário e Starlink no secundário. Túnel VPN criptografado. O IP corporativo não muda — nem quando o tráfego sobe pela constelação.</p>
+    <div class="actions">
+      <a class="btn btn-w" href="apresentacao.html">Abrir o deck</a>
+      <a class="btn btn-g" href="malha.html">Ver a malha</a>
+    </div>
+  </div>
+</header>
+<section id="produto">
+  <div class="wrap">
+    <p class="k">O PRODUTO</p>
+    <h2>Continuidade que banco e governo aceitam.</h2>
+    <p class="lede">Fibra sozinha cai. Starlink sozinho chega com CGNAT e é recusado na allowlist. JetWan resolve os dois.</p>
+    <div class="grid g4" style="margin-top:36px">
+      <div class="card"><h3>SD-WAN</h3><p>Política, QoS e escolha de caminho por aplicação.</p></div>
+      <div class="card"><h3>Starlink backup</h3><p>Failover automático quando a fibra cai ou degrada.</p></div>
+      <div class="card"><h3>VPN cifrada</h3><p>O underlay satelital nunca vê o payload em claro.</p></div>
+      <div class="card"><h3>IP persistente</h3><p>A saída é sempre o IP da organização. Firewall e SIEM permanecem válidos.</p></div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <p class="k">ARQUITETURA</p>
+    <h2>Um overlay. Dois underlays.</h2>
+    <div class="grid g4" style="margin-top:28px">
+      <div class="card"><h3>SITE</h3><p>Filial, órgão, PA, fazenda ou agência.</p></div>
+      <div class="card jet"><h3>JETWAN</h3><p>SD-WAN + túnel no CPE de agregação.</p></div>
+      <div class="card"><h3>UNDERLAY</h3><p>Fibra primária. Starlink secundário.</p></div>
+      <div class="card sx"><h3>GATEWAY</h3><p>IP fixo do Grupo Jet. Sem CGNAT.</p></div>
+    </div>
+    <p class="lede" style="margin-top:24px">Mede a fibra. Decide o caminho. Sobe na constelação. Volta quando a fibra sana. A aplicação não percebe. O auditor também não.</p>
+  </div>
+</section>
+<section id="permuta">
+  <div class="wrap">
+    <p class="k">A IDEIA DA CONVERSA COM A CAROLINE</p>
+    <h2>Permuta. Encontro de contas.</h2>
+    <p class="lede">Interconexão em Brasília e São Paulo. O Grupo Jet opera o cliente. A SpaceX transporta na constelação.</p>
+    <div class="grid g2" style="margin-top:32px">
+      <div class="card jet">
+        <p class="k">GRUPO JET — O CHÃO</p>
+        <h3 style="margin-top:10px">Campo, contrato e comodato</h3>
+        <p>Instalação da antena, troca, suporte 24×7. Antena em comodato. NOC e CNPJ no Brasil. Porta já aberta em ~89 órgãos estaduais e federais e em BB, Caixa, Sicredi e Sicoob. Atendimento aos gateways Starlink no país.</p>
+      </div>
+      <div class="card sx">
+        <p class="k" style="color:var(--sx)">SPACEX — O CÉU</p>
+        <h3 style="margin-top:10px">Transporte na constelação</h3>
+        <p>NNI nos PoPs de Brasília e São Paulo. O link do Grupo Jet entra no backbone satelital. Ativação em milhares de pontas sem obra de last mile. CAPEX no cliente cai para um CPE de agregação.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <p class="k">POR QUE ISSO FECHA NO BRASIL</p>
+    <h2>Relacionamento que a SpaceX não precisa construir.</h2>
+    <div class="grid g4" style="margin-top:28px">
+      <div class="card"><div class="stat">~89</div><p>Órgãos estaduais e federais com entrada já aberta.</p></div>
+      <div class="card"><div class="stat">4</div><p>Bancos: BB, Caixa, Sicredi, Sicoob.</p></div>
+      <div class="card"><div class="stat">20 mil km</div><p>Malha óptica DF, GO, MG e SP.</p></div>
+      <div class="card"><div class="stat">21</div><p>Anos em B2B e governo — não varejo.</p></div>
+    </div>
+  </div>
+</section>
+<section id="malha">
+  <div class="wrap">
+    <p class="k">INFRAESTRUTURA</p>
+    <h2>Malha, OPGW, 30 edges e IA.</h2>
+    <p class="lede">A proposta não é só o CPE. É backbone + borda + inteligência, com a constelação preenchendo o que a fibra ainda não cobre.</p>
+    <div class="grid g2" style="margin-top:28px">
+      <div class="card">
+        <h3>Malha óptica + OPGW</h3>
+        <p>KMZ só com linhas — sem PoP, caixa ou duplicata. Rota OPGW Brasília → Serra da Mesa → Gurupi → Palmas, no corredor de transmissão norte GO/TO.</p>
+        <p style="margin-top:14px"><a class="btn btn-g" href="malha.html">Abrir o mapa</a></p>
+      </div>
+      <div class="card jet">
+        <h3>30 edge data centers</h3>
+        <p>Descentralizar conteúdo e baixar RTT. O overlay JetWan termina perto de quem usa. Onde o edge ainda não tem fibra de sobra, o céu alimenta o site.</p>
+      </div>
+      <div class="card">
+        <h3>Estação de inteligência artificial</h3>
+        <p>Crescimento da estação de IA na malha do Grupo Jet — computação perto da demanda, não só em um DC de capital.</p>
+      </div>
+      <div class="card sx">
+        <h3>~10 mil pontos</h3>
+        <p>Com a permuta, ativação em massa sem last mile nova. Campo 100% Grupo Jet. Antena sempre em comodato.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="caixa">
+  <div class="wrap">
+    <p class="k">DEMANDA JÁ NA MESA</p>
+    <h2>Licitação Caixa: 12.934 PAs, 60 meses.</h2>
+    <p class="lede">Oito lotes geográficos. Cada lote pede LAN no ponto e conectividade principal + contingência. É o caso de uso da arquitetura conjunta.</p>
+    <div class="grid g4" style="margin-top:28px">
+      <div class="card"><div class="stat">12.934</div><p>PAs, lotéricas e correlatas.</p></div>
+      <div class="card"><div class="stat">8</div><p>Lotes geográficos.</p></div>
+      <div class="card"><div class="stat">60</div><p>Meses de contrato.</p></div>
+      <div class="card"><div class="stat">2</div><p>Links por ponto: principal + contingência.</p></div>
+    </div>
+    <div class="grid g2" style="margin-top:14px">
+      <div class="card"><h3>O que cada lote exige</h3><p>Cabeamento, rack, nobreak, switch, CPE — e circuito principal com backup. Milhares de PAs fora da fibra de qualidade.</p></div>
+      <div class="card jet"><h3>Onde a parceria decide</h3><p>Contingência Starlink com o mesmo IP. Campo em comodato. Sem stack caro em cada ponta.</p></div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <p class="k">ONDE ESCALA DEPOIS</p>
+    <h2>Governo, banco e agro.</h2>
+    <div class="grid g2" style="margin-top:28px">
+      <div class="card"><h3>Bancos e cooperativas</h3><p>Agências e PAs exigem principal + contingência e IP conhecido. O CGNAT do satélite não passa.</p></div>
+      <div class="card"><h3>Agronegócio</h3><p>Fazenda, silo, usina e trading. Starlink já chegou no campo; falta o overlay corporativo.</p></div>
+      <div class="card"><h3>Órgãos e missão crítica</h3><p>Saúde, segurança, eleição, defesa civil. Quando o solo falha, o Estado segue no mesmo IP.</p></div>
+      <div class="card"><h3>Multi-site empresarial</h3><p>Filial, planta e obra. Ativar em horas, não em meses de last mile.</p></div>
+    </div>
+  </div>
+</section>
+<section id="fechar">
+  <div class="wrap">
+    <p class="k">COMO FECHAR</p>
+    <h2>Somos menores. A proposta é clara.</h2>
+    <p class="lede">Dividir custo. Dividir receita. Operar juntos o LEO corporativo no Brasil.</p>
+    <ol class="steps">
+      <li><b>01</b><div><strong>Validar o NNI</strong><p>Peering em Brasília e São Paulo. Classe de tráfego e SLA de transporte.</p></div></li>
+      <li><b>02</b><div><strong>Piloto de 90 dias</strong><p>Um órgão, um banco, um site agro. Medir failover, IP e custo.</p></div></li>
+      <li><b>03</b><div><strong>Encontro de contas</strong><p>Grupo Jet no chão. SpaceX no céu.</p></div></li>
+      <li><b>04</b><div><strong>Rateio aberto</strong><p>CAPEX e receita recorrente compartilhados.</p></div></li>
+    </ol>
+    <div class="actions">
+      <a class="btn btn-w" href="apresentacao.html">Ver apresentação</a>
+      <a class="btn btn-g" href="mailto:contato@grupojet.com.br?subject=JetWan%20x%20SpaceX">Conversar</a>
+    </div>
+  </div>
+</section>
+<footer>
+  Documento de trabalho após conversa com Caroline · 2026. Não é parceria anunciada nem endosso da SpaceX. Uso interno do Grupo Jet.
+</footer>
+<script>
+  const nav = document.querySelector("nav");
+  addEventListener("scroll", () => nav.classList.toggle("on", scrollY > 20), { passive: true });
+</script>
 </body>
 </html>
