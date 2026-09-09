@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Malha</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<style>html,body,#map{height:100%;margin:0;background:#000}</style>
+</head><body>
+<div id="map"></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const map=L.map('map').setView([-14.2,-48.5],6);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{maxZoom:19}).addTo(map);
+const s={color:'#FF6600',weight:2.4,opacity:.95};
+L.geoJSON({type:'Feature',geometry:{type:'LineString',coordinates:[[-47.929,-15.794],[-48.05,-15.45],[-48.25,-15.1],[-48.4,-14.7],[-48.46,-14.473],[-48.35,-14.1],[-48.3044,-13.8342],[-48.22,-13.533],[-48.4,-13.04],[-48.17,-12.62],[-48.54,-12.25],[-48.8,-11.95],[-49.0687,-11.7292],[-48.9,-11.35],[-48.55,-10.9],[-48.417,-10.708],[-48.3336,-10.184]]}},{style:s}).addTo(map);
+</script>
+</body></html>
