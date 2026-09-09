@@ -3,44 +3,35 @@
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Grupo Jet — malha</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-<style>
-html,body,#map{height:100%;margin:0;background:#000}
-.top{position:absolute;z-index:500;left:16px;top:16px;color:#fff;font-family:system-ui,sans-serif;background:#000c;padding:12px 14px;border-radius:12px;border:1px solid #ffffff22}
-.top b{color:#FF6600}
-</style></head>
+<style>html,body,#map{height:100%;margin:0;background:#000}
+.top{position:absolute;z-index:500;left:16px;top:16px;color:#fff;font-family:system-ui;background:#000c;padding:12px 14px;border-radius:12px;border:1px solid #ffffff22}
+.top b{color:#FF6600}</style></head>
 <body>
 <div id="map"></div>
-<aside class="top"><b>GRUPO JET</b><div>Malha completa · 2933 linhas · uma cor</div></aside>
-<script src="enc0.js"></script>
-<script src="enc1.js"></script>
-<script src="enc2.js"></script>
-<script src="enc3.js"></script>
+<aside class="top"><b>GRUPO JET</b><div>Malha + SWAP + OPGW · uma cor</div></aside>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-function decode(str){
-  let i=0,lat=0,lng=0,out=[];
-  while(i<str.length){
-    let r=0,s=0,b;
-    do{b=str.charCodeAt(i++)-63;r|=(b&31)<<s;s+=5;}while(b>=32);
-    lat += (r&1)?~(r>>1):(r>>1);
-    r=0;s=0;
-    do{b=str.charCodeAt(i++)-63;r|=(b&31)<<s;s+=5;}while(b>=32);
-    lng += (r&1)?~(r>>1):(r>>1);
-    out.push([lng/1e5, lat/1e5]);
-  }
-  return out;
-}
-const OPGW=[[-47.929,-15.794],[-48.05,-15.45],[-48.25,-15.1],[-48.4,-14.7],[-48.46,-14.473],[-48.35,-14.1],[-48.3044,-13.8342],[-48.22,-13.533],[-48.4,-13.04],[-48.17,-12.62],[-48.54,-12.25],[-48.8,-11.95],[-49.0687,-11.7292],[-48.9,-11.35],[-48.55,-10.9],[-48.417,-10.708],[-48.3336,-10.184]];
+const C='#FF6600';
+const lines=[
+[[-46.81,-23.494],[-47.81,-21.18],[-47.95,-19.76],[-48.27,-18.91],[-48.16,-17.73],[-47.70,-16.92],[-47.88,-15.79]],
+[[-47.88,-15.79],[-48.05,-15.45],[-48.25,-15.10],[-48.46,-14.47],[-48.30,-13.83],[-48.22,-13.53],[-49.14,-13.44],[-49.08,-11.74],[-48.40,-10.71],[-48.33,-10.18]],
+[[-47.88,-15.79],[-47.66,-15.60],[-47.34,-15.54],[-46.86,-17.23],[-46.13,-17.78]],
+[[-48.16,-17.73],[-49.06,-17.73],[-49.92,-16.81],[-50.89,-17.79],[-51.73,-17.89],[-52.55,-17.56],[-53.22,-17.32],[-53.53,-16.95],[-54.63,-16.48],[-54.97,-15.96],[-56.09,-15.60]],
+[[-47.81,-21.18],[-47.47,-22.49],[-46.81,-23.49]],
+[[-49.15,-14.52],[-49.14,-13.44]],
+[[-49.07,-11.71],[-48.40,-10.71]],
+[[-48.40,-10.71],[-48.33,-10.18],[-48.88,-10.17]],
+[[-54.63,-16.48],[-53.54,-16.93]],
+[[-54.97,-15.96],[-56.09,-15.60]],
+[[-48.27,-18.91],[-47.95,-19.76]],
+[[-48.16,-17.73],[-48.27,-18.91]],
+[[-52.63,-18.80],[-51.55,-19.06]],
+[[-48.28,-18.92],[-49.22,-18.42]],
+[[-49.48,-18.49],[-49.22,-18.42]]
+];
 const map=L.map('map').setView([-16.5,-48.5],6);
 L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{maxZoom:19}).addTo(map);
-const style={color:'#FF6600',weight:1.35,opacity:.9};
-const feats=(window.ENC||[]).map(s=>({type:'Feature',geometry:{type:'LineString',coordinates:decode(s)}}));
-const layer=L.geoJSON({type:'FeatureCollection',features:feats},{style,
-  onEachFeature(f,lyr){
-    lyr.on('mouseover',()=>lyr.setStyle({weight:3,color:'#FF6600'}));
-    lyr.on('mouseout',()=>lyr.setStyle(style));
-  }
-}).addTo(map);
-L.geoJSON({type:'Feature',geometry:{type:'LineString',coordinates:OPGW}},{style:{color:'#FF6600',weight:2.4,opacity:.95}}).addTo(map);
-if(feats.length) map.fitBounds(layer.getBounds(),{padding:[20,20]});
+const g=L.layerGroup().addTo(map);
+lines.forEach(c=>L.polyline(c.map(([lng,lat])=>[lat,lng]),{color:C,weight:1.8,opacity:.92}).addTo(g));
+map.fitBounds(g.getBounds(),{padding:[24,24]});
 </script></body></html>
