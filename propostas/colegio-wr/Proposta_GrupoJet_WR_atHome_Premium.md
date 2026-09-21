@@ -3,7 +3,7 @@
 **Proposta do Grupo Jet**  
 Preparado para: Saulo, Diretor — Colégio WR de Alto Padrão, Goiânia  
 Data: 2026  
-Formato: Apresentação + narração em áudio (voz corporativa feminina)
+Formato: Apresentação + narração em áudio (voz corporativa feminina, natural)
 
 ---
 
@@ -68,9 +68,9 @@ Replicação contínua do stream para a Digital Ocean. Snapshot horário das gra
 
 A narração que acompanha esta apresentação está disponível no link:
 
-https://cdn.kairogen.ai/audio-generations/6a9f53f0283c2ce5cb1b23c5/6ab1587979777cb49531b745/speech.mp3
+https://cdn.kairogen.ai/audio-generations/6a9f53f0283c2ce5cb1b23c5/6ab15a13399d4861993d2d6c/speech.mp3
 
-Voz corporativa feminina, tom premium, sem menção a nomes. Pode ser ouvida enquanto o Saulo lê os slides.
+Voz feminina corporativa premium, natural e humana, sem menção a nomes. Pode ser ouvida enquanto o Saulo lê os slides.
 
 ---
 
