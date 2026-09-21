@@ -28,6 +28,7 @@ h2{font-size:clamp(24px,3.6vw,42px);letter-spacing:-.03em;font-weight:700;margin
 .tag{display:inline-block;font-size:11px;font-weight:600;padding:3px 9px;border-radius:99px;margin-bottom:8px}
 .t-amber{background:#f59e0b22;color:#fbbf24}.t-blue{background:#3b82f622;color:#60a5fa}
 .t-green{background:#22c55e22;color:#4ade80}.t-jet{background:#ff6a0022;color:var(--jet2)}
+.t-sky{background:#0ea5e922;color:#38bdf8}
 .price{font-size:clamp(34px,5vw,54px);font-weight:800;letter-spacing:-.04em}
 .price small{font-size:16px;color:var(--mute);font-weight:500}
 .pill{display:flex;justify-content:space-between;padding:9px 0;border-top:1px solid var(--line);font-size:14px;color:var(--mute)}
@@ -51,7 +52,7 @@ h2{font-size:clamp(24px,3.6vw,42px);letter-spacing:-.03em;font-weight:700;margin
 .hint{position:fixed;inset:0;z-index:80;display:grid;place-items:center;background:rgba(6,8,15,.62);backdrop-filter:blur(8px)}
 .hint .box{text-align:center;max-width:460px;padding:24px}
 .hint h3{font-size:28px;margin:10px 0 8px}
-svg.flow{width:min(820px,100%);margin-top:16px;filter:drop-shadow(0 12px 30px #0006)}
+svg.flow{width:min(860px,100%);margin-top:16px;filter:drop-shadow(0 12px 30px #0006)}
 @media(max-width:800px){.g2,.g3{grid-template-columns:1fr}.dots,.info{display:none}.slide{align-items:flex-end}.inner{padding-bottom:12px}}
 </style>
 </head>
@@ -78,40 +79,44 @@ svg.flow{width:min(820px,100%);margin-top:16px;filter:drop-shadow(0 12px 30px #0
 </div>
 <audio id="audio" preload="auto" src="https://cdn.kairogen.ai/audio-generations/6a9f53f0283c2ce5cb1b23c5/6ab15bcb79777cb49531d9e4/speech.mp3"></audio>
 <script>
-const FLOW = `<svg class="flow" viewBox="0 0 820 280" xmlns="http://www.w3.org/2000/svg">
-  <rect width="820" height="280" rx="16" fill="#0c1424"/>
-  <rect x="24" y="46" width="150" height="110" rx="12" fill="#152033" stroke="#3b82f6"/>
-  <text x="99" y="88" text-anchor="middle" fill="#fff" font-size="13" font-family="Inter">Estúdio WR</text>
-  <text x="99" y="108" text-anchor="middle" fill="#93a0b5" font-size="11" font-family="Inter">câmera + áudio</text>
+const FLOW = `<svg class="flow" viewBox="0 0 860 300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="860" height="300" rx="16" fill="#0c1424"/>
+  <rect x="24" y="50" width="150" height="110" rx="12" fill="#152033" stroke="#3b82f6"/>
+  <text x="99" y="92" text-anchor="middle" fill="#fff" font-size="13" font-family="Inter">Estúdio WR</text>
+  <text x="99" y="112" text-anchor="middle" fill="#93a0b5" font-size="11" font-family="Inter">câmera + áudio</text>
   <path d="M174 88 H250" stroke="#ff6a00" stroke-width="3"/>
   <circle cx="250" cy="88" r="5" fill="#ff6a00"/>
-  <text x="212" y="78" fill="#ff8a33" font-size="10" font-family="Inter">Fibra</text>
-  <path d="M174 114 H250" stroke="#3b82f6" stroke-width="3"/>
-  <circle cx="250" cy="114" r="5" fill="#3b82f6"/>
-  <text x="214" y="132" fill="#60a5fa" font-size="10" font-family="Inter">4G</text>
-  <rect x="268" y="46" width="170" height="110" rx="12" fill="#152033" stroke="#ff6a00"/>
-  <text x="353" y="84" text-anchor="middle" fill="#fff" font-size="13" font-family="Inter">Datacenter Jet</text>
-  <text x="353" y="104" text-anchor="middle" fill="#93a0b5" font-size="11" font-family="Inter">origin · ABR</text>
-  <text x="353" y="122" text-anchor="middle" fill="#93a0b5" font-size="11" font-family="Inter">1080 / 720 / 480</text>
-  <path d="M438 88 H510" stroke="#3b82f6" stroke-width="3"/>
-  <rect x="510" y="36" width="140" height="70" rx="12" fill="#152033" stroke="#22c55e"/>
-  <text x="580" y="66" text-anchor="middle" fill="#fff" font-size="13" font-family="Inter">Player</text>
-  <text x="580" y="84" text-anchor="middle" fill="#93a0b5" font-size="11" font-family="Inter">aluno em casa</text>
-  <path d="M438 130 H510" stroke="#22c55e" stroke-width="3"/>
-  <rect x="510" y="122" width="140" height="70" rx="12" fill="#152033" stroke="#22c55e"/>
-  <text x="580" y="152" text-anchor="middle" fill="#fff" font-size="13" font-family="Inter">Gravação</text>
-  <text x="580" y="170" text-anchor="middle" fill="#93a0b5" font-size="11" font-family="Inter">fallback ao vivo</text>
-  <path d="M353 156 V200 H680 V88" fill="none" stroke="#22c55e" stroke-width="2" stroke-dasharray="5 4"/>
-  <rect x="680" y="50" width="116" height="80" rx="12" fill="#10261a" stroke="#22c55e"/>
-  <text x="738" y="84" text-anchor="middle" fill="#fff" font-size="12" font-family="Inter">Digital Ocean</text>
-  <text x="738" y="104" text-anchor="middle" fill="#4ade80" font-size="11" font-family="Inter">disaster recover</text>
-  <text x="24" y="250" fill="#93a0b5" font-size="12" font-family="Inter">Se A oscilar, B assume. Se o local cair, o DNS aponta para a Digital Ocean.</text>
+  <text x="200" y="78" fill="#ff8a33" font-size="10" font-family="Inter">Fibra 1</text>
+  <path d="M174 114 H250" stroke="#38bdf8" stroke-width="3"/>
+  <circle cx="250" cy="114" r="5" fill="#38bdf8"/>
+  <text x="200" y="132" fill="#38bdf8" font-size="10" font-family="Inter">Fibra 2</text>
+  <path d="M174 140 H250" stroke="#22c55e" stroke-width="3" stroke-dasharray="4 3"/>
+  <circle cx="250" cy="140" r="5" fill="#22c55e"/>
+  <text x="200" y="158" fill="#4ade80" font-size="10" font-family="Inter">Starlink</text>
+  <rect x="268" y="50" width="180" height="120" rx="12" fill="#152033" stroke="#ff6a00"/>
+  <text x="358" y="88" text-anchor="middle" fill="#fff" font-size="13" font-family="Inter">Datacenter Jet</text>
+  <text x="358" y="108" text-anchor="middle" fill="#93a0b5" font-size="11" font-family="Inter">origin · ABR</text>
+  <text x="358" y="126" text-anchor="middle" fill="#93a0b5" font-size="11" font-family="Inter">1080 / 720 / 480</text>
+  <text x="358" y="150" text-anchor="middle" fill="#4ade80" font-size="10" font-family="Inter">failover automático</text>
+  <path d="M448 88 H520" stroke="#3b82f6" stroke-width="3"/>
+  <rect x="520" y="40" width="140" height="70" rx="12" fill="#152033" stroke="#22c55e"/>
+  <text x="590" y="70" text-anchor="middle" fill="#fff" font-size="13" font-family="Inter">Player</text>
+  <text x="590" y="88" text-anchor="middle" fill="#93a0b5" font-size="11" font-family="Inter">aluno em casa</text>
+  <path d="M448 130 H520" stroke="#22c55e" stroke-width="3"/>
+  <rect x="520" y="126" width="140" height="70" rx="12" fill="#152033" stroke="#22c55e"/>
+  <text x="590" y="156" text-anchor="middle" fill="#fff" font-size="13" font-family="Inter">Gravação</text>
+  <text x="590" y="174" text-anchor="middle" fill="#93a0b5" font-size="11" font-family="Inter">fallback ao vivo</text>
+  <path d="M358 170 V210 H720 V88" fill="none" stroke="#22c55e" stroke-width="2" stroke-dasharray="5 4"/>
+  <rect x="720" y="54" width="116" height="80" rx="12" fill="#10261a" stroke="#22c55e"/>
+  <text x="778" y="88" text-anchor="middle" fill="#fff" font-size="12" font-family="Inter">Digital Ocean</text>
+  <text x="778" y="108" text-anchor="middle" fill="#4ade80" font-size="11" font-family="Inter">disaster recover</text>
+  <text x="24" y="270" fill="#93a0b5" font-size="12" font-family="Inter">Três caminhos independentes: Fibra 1, Fibra 2 e Starlink. Se um cair, os outros assumem.</text>
 </svg>`;
 const DATA = [
   {t:0,l:"01 · Abertura",bg:"https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=1600&q=70",h1:1,title:"Streaming próprio para o WR At Home.",lede:"Do estúdio do Colégio WR até a casa do aluno — sem travar, sem tela preta, sem depender da Spalla.",cap:"Olá, Saulo. Aqui está a proposta do Grupo Jet para o Colégio WR At Home."},
   {t:8,l:"02 · Percurso",bg:"https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=70",title:"Do estúdio até o aluno em casa.",lede:"A aula sai do Colégio WR, entra no datacenter do Grupo Jet e chega no celular ou no notebook do aluno.",cap:"Vamos mostrar como a solução funciona, do estúdio até o aluno em casa."},
-  {t:16,l:"03 · Topologia",bg:"https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=70",full:1,title:"Dois caminhos. Um sinal.",lede:"O sinal sai do estúdio por fibra e por 4G ao mesmo tempo. Se um oscila, o outro assume em segundos.",flow:1,cap:"O sinal sai do estúdio do Colégio WR por dois caminhos independentes: a fibra principal e um backup em 4G."},
-  {t:28,l:"04 · Failover",bg:"https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=70",title:"Se o A oscilar, o B assume.",lede:"Hoje, na Spalla, o segundo sinal não inicia. Aqui os dois caminhos estão vivos o tempo todo.",cards:[["t-amber","Ingest A","Fibra principal","Caminho primário no datacenter do Grupo Jet."],["t-amber","Ingest B","Backup 4G","Caminho independente. Assume sozinho."]],cap:"Se o caminho A oscilar, o B assume em segundos, sem o aluno perceber."},
+  {t:16,l:"03 · Topologia",bg:"https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=70",full:1,title:"Três caminhos. Um sinal.",lede:"O sinal sai do estúdio por duas fibras e por Starlink ao mesmo tempo. Se um oscila, os outros assumem em segundos.",flow:1,cap:"O sinal sai do estúdio do Colégio WR por três caminhos independentes: duas fibras e um backup via Starlink."},
+  {t:28,l:"04 · Failover",bg:"https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=70",title:"Se um caminho cair, os outros assumem.",lede:"Hoje, na Spalla, o segundo sinal não inicia. Aqui os três caminhos estão vivos o tempo todo.",cards:[["t-amber","Ingest A","Fibra 1","Caminho primário no datacenter do Grupo Jet."],["t-sky","Ingest B","Fibra 2","Segunda fibra, rota independente."],["t-green","Ingest C","Starlink","Backup via satélite. Assume sozinho."]],cap:"Se a Fibra 1 oscilar, a Fibra 2 ou o Starlink assumem em segundos, sem o aluno perceber."},
   {t:38,l:"05 · Qualidade",bg:"https://images.unsplash.com/photo-1544197150-b99a5804f82b?auto=format&fit=crop&w=1600&q=70",title:"Várias qualidades ao mesmo tempo.",lede:"No datacenter do Grupo Jet o origin gera 1080p, 720p e 480p em tempo real. O player escolhe a melhor para cada conexão.",g3:1,cards:[["t-blue","1080p","Fibra boa","Quem tem banda assiste em alta."],["t-blue","720p","Média","Cai um pouco, a qualidade desce sozinha."],["t-blue","480p","3G / Wi-Fi fraco","A aula continua. Sem tela preta."]],cap:"Um servidor de origem faz a transcodificação adaptativa. O player escolhe a melhor qualidade para cada conexão."},
   {t:52,l:"06 · Gravação",bg:"https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=70",title:"Se o ao vivo cair, a aula não para.",lede:"Toda aula grava automaticamente, em paralelo. Se o stream cair de vez, o aluno cai na versão gravada.",cards:[["t-green","Ao vivo","Stream principal","Chat, qualidade adaptativa, monitoramento."],["t-green","Fallback","Gravação instantânea","O player troca sozinho. A aula segue."]],cap:"Toda aula grava automaticamente. Se o stream cair de vez, o aluno cai na gravação sem interrupção."},
   {t:62,l:"07 · Disaster recovery",bg:"https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=70",full:1,title:"Se o local cair, a Digital Ocean assume.",lede:"Replicação contínua do stream. Snapshot horário das gravações. O DNS redireciona. O aluno nem percebe.",flow:1,cap:"Replicamos tudo na Digital Ocean. Se o datacenter local cair, o DNS redireciona e a aula segue de lá."},
