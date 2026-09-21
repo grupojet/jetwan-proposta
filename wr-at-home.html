@@ -16,9 +16,9 @@ html,body{height:100%;background:var(--bg);color:var(--ink);font-family:Inter,sy
 .veil{position:absolute;inset:0;background:linear-gradient(90deg,#06080f 7%,#06080fd0 48%,#06080f40 100%)}
 .inner{position:relative;z-index:2;width:min(1160px,92%);margin:0 auto}
 .k{font-size:12px;letter-spacing:.2em;font-weight:700;color:var(--jet2);text-transform:uppercase;margin-bottom:12px}
-h1{font-size:clamp(30px,5vw,60px);line-height:.98;letter-spacing:-.035em;font-weight:800;max-width:16ch;margin-bottom:14px}
-h2{font-size:clamp(24px,3.6vw,42px);letter-spacing:-.03em;font-weight:700;margin-bottom:12px;max-width:20ch}
-.lede{font-size:clamp(15px,1.6vw,19px);color:var(--mute);font-weight:300;max-width:560px;line-height:1.55}
+h1,.h1{font-size:clamp(30px,5vw,56px);line-height:.98;letter-spacing:-.035em;font-weight:800;max-width:16ch;margin-bottom:14px}
+h2{font-size:clamp(24px,3.6vw,40px);letter-spacing:-.03em;font-weight:700;margin-bottom:12px;max-width:20ch}
+.lede{font-size:clamp(15px,1.6vw,19px);color:var(--mute);font-weight:300;max-width:620px;line-height:1.55}
 .caption{margin-top:18px;max-width:660px;font-size:14px;color:#d7deea;background:rgba(255,255,255,.05);border:1px solid var(--line);border-left:3px solid var(--jet);padding:11px 14px;border-radius:0 12px 12px 0}
 .grid{display:grid;gap:12px;margin-top:18px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}
 .card{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:16px;padding:16px}
@@ -26,8 +26,7 @@ h2{font-size:clamp(24px,3.6vw,42px);letter-spacing:-.03em;font-weight:700;margin
 .tag{display:inline-block;font-size:11px;font-weight:600;padding:3px 9px;border-radius:99px;margin-bottom:8px}
 .t-amber{background:#f59e0b22;color:#fbbf24}.t-blue{background:#3b82f622;color:#60a5fa}
 .t-green{background:#22c55e22;color:#4ade80}.t-jet{background:#ff6a0022;color:var(--jet2)}.t-sky{background:#0ea5e922;color:#38bdf8}
-.price{font-size:clamp(34px,5vw,54px);font-weight:800}
-.price small{font-size:16px;color:var(--mute);font-weight:500}
+.price{font-size:clamp(34px,5vw,54px);font-weight:800}.price small{font-size:16px;color:var(--mute);font-weight:500}
 .pill{display:flex;justify-content:space-between;padding:9px 0;border-top:1px solid var(--line);font-size:14px;color:var(--mute)}.pill b{color:#fff}
 .top{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;padding:14px 20px}
 .brand{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700}
@@ -43,7 +42,7 @@ h2{font-size:clamp(24px,3.6vw,42px);letter-spacing:-.03em;font-weight:700;margin
 .hint{position:fixed;inset:0;z-index:80;display:grid;place-items:center;background:rgba(6,8,15,.62)}
 @media(max-width:800px){.g2,.g3{grid-template-columns:1fr}.dots{display:none}}
 </style></head><body>
-<div class="top"><div class="brand"><span class="dot"></span> GRUPO JET · WR At Home</div><div class="meta" id="chap">01</div></div>
+<div class="top"><div class="brand"><span class="dot"></span> GRUPO JET · WR At Home</div><div id="chap">01</div></div>
 <div class="dots" id="dots"></div>
 <div class="stage" id="stage"></div>
 <div class="player">
@@ -61,11 +60,12 @@ const DATA=[
 {t:16,l:"03 · Topologia",title:"Três caminhos. Um sinal.",lede:"Fibra 1, Fibra 2 e Starlink ao mesmo tempo. Se um oscila, os outros assumem.",cap:"Três caminhos independentes: duas fibras e Starlink.",bg:"https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=70"},
 {t:28,l:"04 · Failover",title:"Se um caminho cair, os outros assumem.",lede:"Os três caminhos ficam vivos o tempo todo.",cards:[["t-amber","Ingest A","Fibra 1","Caminho primário."],["t-sky","Ingest B","Fibra 2","Rota independente."],["t-green","Ingest C","Starlink","Backup via satélite."]],cap:"Failover em segundos, sem o aluno perceber.",bg:"https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=70"},
 {t:38,l:"05 · Qualidade",title:"Várias qualidades ao mesmo tempo.",lede:"1080p, 720p e 480p. O player escolhe sozinho.",g3:1,cards:[["t-blue","1080p","Fibra boa","Alta qualidade."],["t-blue","720p","Média","Desce sozinha."],["t-blue","480p","Wi-Fi fraco","A aula continua."]],cap:"Transcodificação adaptativa no datacenter Jet.",bg:"https://images.unsplash.com/photo-1544197150-b99a5804f82b?auto=format&fit=crop&w=1600&q=70"},
-{t:47,l:"06 · Monitoramento",title:"Saber se o problema é nosso ou da casa do aluno.",lede:"No login medimos a última milha. Na aula o player manda telemetria. O painel separa falha nossa de internet do aluno.",g3:1,cards:[["t-jet","No login","Probe de 3s","Latência e banda até o datacenter Jet."],["t-blue","Na aula","Telemetria","Buffer, travamento e operadora."],["t-green","No painel","Diagnóstico","Um aluno = casa dele. Muitos = nosso lado."]],cap:"Sem túnel na casa do aluno. Só métrica do player e teste no caminho da aula.",bg:"https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=70"},
-{t:52,l:"07 · Gravação",title:"Se o ao vivo cair, a aula não para.",lede:"Toda aula grava em paralelo. O aluno cai na gravação sem interrupção.",cards:[["t-green","Ao vivo","Stream","Qualidade adaptativa."],["t-green","Fallback","Gravação","O player troca sozinho."]],cap:"Gravação automática com fallback.",bg:"https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=70"},
-{t:62,l:"08 · Disaster recovery",title:"Se o local cair, a Digital Ocean assume.",lede:"Replicação contínua. O DNS redireciona.",cap:"Disaster recovery na Digital Ocean.",bg:"https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=70"},
-{t:73,l:"09 · Comercial",title:"R$ 7.800 / mês · piso",lede:"Mínimo mensal mais taxa por aluno ativo.",price:1,cap:"Piso + por aluno.",bg:"https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=70"},
-{t:82,l:"10 · Cronograma",title:"MVP em quinze dias.",lede:"Piloto e go-live em cerca de 25 dias.",g3:1,cards:[["t-jet","Dias 1–15","MVP","Ingest, origin e player."],["t-jet","+5 dias","Piloto","Uma turma real."],["t-jet","+5 dias","Go-live","Abertura geral."]],cap:"Qualquer dúvida, é só falar.",bg:"https://images.unsplash.com/photo-1524178232363-1fb2b075b622?auto=format&fit=crop&w=1600&q=70"}
+{t:47,l:"06 · Monitoramento",title:"Saber se o problema é nosso ou da casa do aluno.",lede:"No login medimos a última milha. Na aula o player manda telemetria.",g3:1,cards:[["t-jet","No login","Probe de 3s","Latência e banda até o datacenter Jet."],["t-blue","Na aula","Telemetria","Buffer, travamento e operadora."],["t-green","No painel","Diagnóstico","Um aluno = casa dele. Muitos = nosso lado."]],cap:"Sem túnel na casa do aluno.",bg:"https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=70"},
+{t:50,l:"07 · Agentes IA",title:"Agentes especialistas reportam o que importa.",lede:"Três agentes leem a telemetria o tempo todo. O WR recebe o diagnóstico pronto. O time Jet só entra quando o problema é nosso.",g3:1,cards:[["t-jet","Diagnóstico","Agente QoE","Separa casa do aluno de falha do serviço."],["t-blue","Ao vivo","Agente de incidente","Alerta no minuto se a turma começar a travar."],["t-green","Pós-aula","Agente de relatório","Resumo no WhatsApp: o que foi nosso e o que foi última milha."]],cap:"IA de operação. Não escuta o conteúdo da aula.",bg:"https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1600&q=70"},
+{t:52,l:"08 · Gravação",title:"Se o ao vivo cair, a aula não para.",lede:"Toda aula grava em paralelo. O aluno cai na gravação sem interrupção.",cards:[["t-green","Ao vivo","Stream","Qualidade adaptativa."],["t-green","Fallback","Gravação","O player troca sozinho."]],cap:"Gravação automática com fallback.",bg:"https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=70"},
+{t:62,l:"09 · Disaster recovery",title:"Se o local cair, a Digital Ocean assume.",lede:"Replicação contínua. O DNS redireciona.",cap:"Disaster recovery na Digital Ocean.",bg:"https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=70"},
+{t:73,l:"10 · Comercial",title:"R$ 7.800 / mês · piso",lede:"Mínimo mensal mais taxa por aluno ativo.",price:1,cap:"Piso + por aluno.",bg:"https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=70"},
+{t:82,l:"11 · Cronograma",title:"MVP em quinze dias.",lede:"Piloto e go-live em cerca de 25 dias.",g3:1,cards:[["t-jet","Dias 1–15","MVP","Ingest, origin e player."],["t-jet","+5 dias","Piloto","Uma turma real."],["t-jet","+5 dias","Go-live","Abertura geral."]],cap:"Qualquer dúvida, é só falar.",bg:"https://images.unsplash.com/photo-1524178232363-1fb2b075b622?auto=format&fit=crop&w=1600&q=70"}
 ];
 const stage=document.getElementById("stage");
 DATA.forEach((s,i)=>{const el=document.createElement("section");el.className="slide"+(i===0?" on":"");let extra="";if(s.cards)extra+=`<div class="grid ${s.g3?"g3":"g2"}">${s.cards.map(c=>`<div class="card"><span class="tag ${c[0]}">${c[1]}</span><h3>${c[2]}</h3><p>${c[3]}</p></div>`).join("")}</div>`;if(s.price)extra=`<div class="price">R$ 7.800 <small>/mês · piso</small></div><div class="card" style="max-width:520px;margin-top:16px"><div class="pill"><span>Piso</span><b>1.000 alunos</b></div><div class="pill"><span>Por aluno acima</span><b>R$ 5 a R$ 10</b></div><div class="pill"><span>3.000 alunos</span><b>~ R$ 24 mil</b></div></div>`;el.innerHTML=`<div class="bg" style="background-image:url('${s.bg}')"></div><div class="veil"></div><div class="inner"><div class="k">${s.l}</div>${s.h1?`<h1>${s.title}</h1>`:`<h2>${s.title}</h2>`}<p class="lede">${s.lede||""}</p>${extra}<div class="caption">${s.cap}</div></div>`;stage.appendChild(el);});
