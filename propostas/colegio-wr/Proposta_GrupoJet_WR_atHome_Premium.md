@@ -1,4 +1,4 @@
-# Plataforma de Streaming Própria — Colégio WR at Home
+# Plataforma de Streaming Própria — Colégio WR At Home
 
 **Proposta do Grupo Jet**  
 Preparado para: Saulo, Diretor — Colégio WR de Alto Padrão, Goiânia  
@@ -68,7 +68,7 @@ Replicação contínua do stream para a Digital Ocean. Snapshot horário das gra
 
 A narração que acompanha esta apresentação está disponível no link:
 
-https://cdn.kairogen.ai/audio-generations/6a9f53f0283c2ce5cb1b23c5/6ab15a13399d4861993d2d6c/speech.mp3
+https://cdn.kairogen.ai/audio-generations/6a9f53f0283c2ce5cb1b23c5/6ab15b22399d4861993d379e/speech.mp3
 
 Voz feminina corporativa premium, natural e humana, sem menção a nomes. Pode ser ouvida enquanto o Saulo lê os slides.
 

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Topologia — Colégio WR At Home</title>
+<style>
+  body { font-family: -apple-system, Segoe UI, Roboto, sans-serif; background:#0b1220; color:#e6edf3; margin:0; padding:40px; }
+  h1 { font-size:22px; margin-bottom:8px; }
+  .sub { color:#8b949e; margin-bottom:28px; }
+  .flow { display:flex; flex-direction:column; gap:14px; max-width:760px; }
+  .row { display:flex; gap:14px; align-items:stretch; }
+  .box { background:#161b22; border:1px solid #30363d; border-radius:10px; padding:16px 18px; flex:1; }
+  .box.primary { border-color:#1f6feb; }
+  .box.dr { border-color:#238636; }
+  .box h3 { margin:0 0 6px; font-size:15px; }
+  .box p { margin:0; font-size:13px; color:#8b949e; line-height:1.5; }
+  .arrow { text-align:center; color:#484f58; font-size:18px; }
+  .tag { display:inline-block; font-size:11px; padding:2px 8px; border-radius:20px; background:#1f6feb22; color:#58a6ff; margin-bottom:6px; }
+  .tag.green { background:#23863622; color:#3fb950; }
+  .tag.amber { background:#d2992222; color:#d29922; }
+</style>
+</head>
+<body>
+  <h1>Topologia da Solução</h1>
+  <div class="sub">Colégio WR At Home · Grupo Jet · Datacenter próprio + DR na Digital Ocean</div>
+
+  <div class="flow">
+    <div class="row">
+      <div class="box primary">
+        <span class="tag">Estúdio</span>
+        <h3>Colégio WR</h3>
+        <p>Câmera, áudio e tela do professor. Sinal sai pelo estúdio.</p>
+      </div>
+    </div>
+    <div class="arrow">↓</div>
+    <div class="row">
+      <div class="box">
+        <span class="tag amber">Ingest A</span>
+        <h3>Fibra principal</h3>
+        <p>Caminho primário de entrada no datacenter.</p>
+      </div>
+      <div class="box">
+        <span class="tag amber">Ingest B</span>
+        <h3>Backup 4G / satélite</h3>
+        <p>Caminho independente. Assume em segundos se o A oscilar.</p>
+      </div>
+    </div>
+    <div class="arrow">↓</div>
+    <div class="row">
+      <div class="box primary">
+        <span class="tag">Origin</span>
+        <h3>Servidor de origem</h3>
+        <p>Transcodificação adaptativa em tempo real: 1080p, 720p e 480p simultâneos.</p>
+      </div>
+    </div>
+    <div class="arrow">↓</div>
+    <div class="row">
+      <div class="box">
+        <span class="tag">Entrega</span>
+        <h3>Player web / app</h3>
+        <p>Escolhe a melhor qualidade para cada aluno. Chat priorizado. Sem tela preta.</p>
+      </div>
+      <div class="box">
+        <span class="tag green">Gravação</span>
+        <h3>Automática</h3>
+        <p>Toda aula grava em paralelo. Fallback instantâneo se o stream cair.</p>
+      </div>
+    </div>
+    <div class="arrow">↓</div>
+    <div class="row">
+      <div class="box">
+        <span class="tag">Storage local</span>
+        <h3>Datacenter Grupo Jet</h3>
+        <p>Gravações e stream ao vivo no local.</p>
+      </div>
+      <div class="box dr">
+        <span class="tag green">DR</span>
+        <h3>Digital Ocean</h3>
+        <p>Replicação contínua. DNS redireciona se o local cair.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
