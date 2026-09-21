@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proposta — Colégio WR At Home · Grupo Jet</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#070b14; --bg2:#0c1322; --ink:#eef2f7; --mute:#8b95a7; --line:rgba(255,255,255,.08);
+    --jet:#ff6a00; --jet2:#ff8a33; --blue:#3b82f6; --green:#22c55e; --amber:#f59e0b;
+    --card:rgba(255,255,255,.03); --radius:18px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .wrap{width:min(1080px,92%);margin:0 auto}
+  /* Top bar */
+  .topbar{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:14px 24px;background:rgba(7,11,20,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.04em;font-size:15px}
+  .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--jet);box-shadow:0 0 12px var(--jet)}
+  .topbar .meta{font-size:12px;color:var(--mute)}
+  /* Player */
+  .player{position:fixed;bottom:0;left:0;right:0;z-index:60;background:linear-gradient(180deg,rgba(7,11,20,.4),rgba(7,11,20,.96));border-top:1px solid var(--line);padding:14px 24px;display:flex;align-items:center;gap:16px}
+  .player .play{width:46px;height:46px;border-radius:50%;border:none;background:var(--jet);color:#fff;font-size:18px;cursor:pointer;display:grid;place-items:center;flex:none;transition:transform .15s}
+  .player .play:hover{transform:scale(1.06)}
+  .player .info{flex:1;min-width:0}
+  .player .info .t{font-size:13px;font-weight:600}
+  .player .info .s{font-size:11px;color:var(--mute)}
+  .player .bar{flex:1;height:6px;border-radius:6px;background:rgba(255,255,255,.1);overflow:hidden;cursor:pointer;max-width:420px}
+  .player .bar > i{display:block;height:100%;width:0;background:var(--jet);border-radius:6px;transition:width .2s linear}
+  .player .time{font-size:11px;color:var(--mute);font-variant-numeric:tabular-nums;min-width:78px;text-align:right}
+  /* Hero */
+  .hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 80px;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(900px 500px at 80% 20%,rgba(255,106,0,.18),transparent 60%),radial-gradient(700px 400px at 10% 80%,rgba(59,130,246,.12),transparent 60%)}
+  .hero .copy{position:relative;z-index:2;max-width:760px}
+  .kicker{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:.18em;color:var(--jet2);text-transform:uppercase;margin-bottom:18px}
+  .kicker::before{content:"";width:24px;height:2px;background:var(--jet)}
+  h1{font-size:clamp(34px,5.4vw,64px);font-weight:800;letter-spacing:-.03em;line-height:1.02;margin-bottom:20px}
+  h1 .grad{background:linear-gradient(90deg,var(--jet),var(--jet2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lede{font-size:clamp(16px,2vw,20px);color:var(--mute);font-weight:300;max-width:620px;margin-bottom:30px}
+  .cta{display:inline-flex;align-items:center;gap:10px;height:50px;padding:0 26px;border-radius:999px;background:var(--jet);color:#fff;font-weight:600;font-size:15px;cursor:pointer;border:none;transition:transform .15s,box-shadow .15s}
+  .cta:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(255,106,0,.35)}
+  .cta.ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}
+  .cta.ghost:hover{border-color:var(--jet);color:var(--jet2)}
+  .actions{display:flex;gap:12px;flex-wrap:wrap}
+  /* Sections */
+  section{padding:90px 0;border-top:1px solid var(--line)}
+  .sec-head{margin-bottom:40px}
+  .sec-head .k{font-size:12px;font-weight:700;letter-spacing:.2em;color:var(--jet2);text-transform:uppercase;margin-bottom:10px}
+  .sec-head h2{font-size:clamp(26px,3.6vw,40px);font-weight:700;letter-spacing:-.02em;margin-bottom:12px}
+  .sec-head p{color:var(--mute);max-width:680px;font-size:16px}
+  .grid{display:grid;gap:16px}
+  .g2{grid-template-columns:1fr 1fr}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px;transition:border-color .2s,transform .2s}
+  .card:hover{border-color:rgba(255,106,0,.4);transform:translateY(-3px)}
+  .card .ico{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-size:20px;margin-bottom:14px;background:rgba(255,106,0,.12);color:var(--jet2)}
+  .card h3{font-size:17px;margin-bottom:8px;font-weight:600}
+  .card p{color:var(--mute);font-size:14px}
+  .card .tag{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;margin-bottom:10px}
+  .tag.blue{background:rgba(59,130,246,.15);color:#60a5fa}
+  .tag.green{background:rgba(34,197,94,.15);color:#4ade80}
+  .tag.amber{background:rgba(245,158,11,.15);color:#fbbf24}
+  .tag.jet{background:rgba(255,106,0,.15);color:var(--jet2)}
+  /* Topology */
+  .topo{display:flex;flex-direction:column;gap:14px;max-width:820px}
+  .trow{display:flex;gap:14px;align-items:stretch}
+  .tbox{flex:1;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+  .tbox.primary{border-color:rgba(59,130,246,.5);background:rgba(59,130,246,.06)}
+  .tbox.dr{border-color:rgba(34,197,94,.5);background:rgba(34,197,94,.06)}
+  .tbox h4{font-size:15px;margin-bottom:4px}
+  .tbox p{font-size:13px;color:var(--mute)}
+  .tarrow{text-align:center;color:var(--mute);font-size:20px;line-height:1}
+  /* Steps */
+  .steps{list-style:none;counter-reset:s}
+  .steps li{display:grid;grid-template-columns:56px 1fr;gap:18px;padding:22px 0;border-top:1px solid var(--line);counter-increment:s}
+  .steps li::before{content:counter(s,decimal-leading-zero);font-size:22px;font-weight:700;color:var(--jet);font-variant-numeric:tabular-nums}
+  .steps b{display:block;font-size:16px;margin-bottom:4px}
+  .steps span{color:var(--mute);font-size:14px}
+  /* Pricing */
+  .price-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:20px;align-items:start}
+  .price-main{background:linear-gradient(160deg,rgba(255,106,0,.12),rgba(255,106,0,.02));border:1px solid rgba(255,106,0,.3);border-radius:var(--radius);padding:32px}
+  .price-main .big{font-size:clamp(32px,5vw,48px);font-weight:800;letter-spacing:-.03em}
+  .price-main .big small{font-size:16px;color:var(--mute);font-weight:400}
+  .price-main ul{margin-top:18px;list-style:none}
+  .price-main li{padding:8px 0;border-top:1px solid var(--line);font-size:14px;color:var(--mute);display:flex;justify-content:space-between}
+  .price-main li b{color:var(--ink)}
+  .price-side .card{margin-bottom:14px}
+  /* Footer */
+  footer{padding:50px 0 120px;border-top:1px solid var(--line);color:var(--mute);font-size:13px}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s,transform .6s}
+  .reveal.in{opacity:1;transform:none}
+  @media(max-width:800px){.g2,.g3,.g4,.price-grid{grid-template-columns:1fr}.trow{flex-direction:column}.player .bar{max-width:none}.player .time{display:none}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand"><span class="dot"></span> GRUPO JET · Colégio WR At Home</div>
+  <div class="meta">Proposta técnica · 2026</div>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="copy">
+      <span class="kicker">Proposta técnica</span>
+      <h1>Streaming próprio para o <span class="grad">WR At Home</span>.<br>Do estúdio ao aluno, sem travar.</h1>
+      <p class="lede">Plataforma sob medida rodando no datacenter do Grupo Jet, com ingest redundante, transcodificação adaptativa, gravação automática e disaster recovery na Digital Ocean. O aluno assiste. A aula não para.</p>
+      <div class="actions">
+        <button class="cta" onclick="document.getElementById('topo').scrollIntoView({behavior:'smooth'})">Ver como funciona →</button>
+        <button class="cta ghost" onclick="togglePlay()">▶ Ouvir a narração</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- TOPOLOGIA -->
+<section id="topo">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="k">01 · Arquitetura</div>
+      <h2>Do estúdio até a casa do aluno</h2>
+      <p>Dois caminhos de entrada independentes. Se um oscila, o outro assume em segundos. O aluno nem percebe a troca.</p>
+    </div>
+    <div class="topo reveal">
+      <div class="trow"><div class="tbox primary"><h4>Estúdio · Colégio WR</h4><p>Câmera, áudio e tela do professor. Sinal sai por dois caminhos.</p></div></div>
+      <div class="tarrow">↓</div>
+      <div class="trow">
+        <div class="tbox"><span class="tag amber">Ingest A</span><h4>Fibra principal</h4><p>Caminho primário de entrada no datacenter.</p></div>
+        <div class="tbox"><span class="tag amber">Ingest B</span><h4>Backup 4G</h4><p>Caminho independente. Assume em segundos se o A oscilar.</p></div>
+      </div>
+      <div class="tarrow">↓</div>
+      <div class="trow"><div class="tbox primary"><span class="tag blue">Origin</span><h4>Servidor de origem</h4><p>Transcodificação adaptativa em tempo real: 1080p, 720p e 480p simultâneos.</p></div></div>
+      <div class="tarrow">↓</div>
+      <div class="trow">
+        <div class="tbox"><span class="tag">Entrega</span><h4>Player web</h4><p>Escolhe a melhor qualidade para cada aluno. Chat priorizado.</p></div>
+        <div class="tbox"><span class="tag green">Gravação</span><h4>Automática</h4><p>Toda aula grava em paralelo. Fallback instantâneo se o stream cair.</p></div>
+      </div>
+      <div class="tarrow">↓</div>
+      <div class="trow">
+        <div class="tbox"><span class="tag">Storage local</span><h4>Datacenter Grupo Jet</h4><p>Gravações e stream ao vivo no local.</p></div>
+        <div class="tbox dr"><span class="tag green">DR</span><h4>Digital Ocean</h4><p>Replicação contínua. DNS redireciona se o local cair.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOCOS -->
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="k">02 · Componentes</div>
+      <h2>O que entra na solução</h2>
+    </div>
+    <div class="grid g3">
+      <div class="card reveal"><div class="ico">🔁</div><span class="tag amber">Redundância</span><h3>Ingest A + B de verdade</h3><p>Sinal A e sinal B separados geograficamente. Quando o A cai, o B assume de verdade — diferente do que acontece hoje, onde o B não inicia.</p></div>
+      <div class="card reveal"><div class="ico">🎬</div><span class="tag blue">Transcodificação</span><h3>ABR em tempo real</h3><p>Várias qualidades simultâneas. O player escolhe a melhor conforme a conexão do aluno, sem buffering.</p></div>
+      <div class="card reveal"><div class="ico">💾</div><span class="tag green">Gravação</span><h3>Automática + fallback</h3><p>Toda aula grava em paralelo. Se o stream cair de vez, o aluno cai na gravação sem interrupção.</p></div>
+      <div class="card reveal"><div class="ico">🛡️</div><span class="tag green">Disaster Recovery</span><h3>Digital Ocean</h3><p>Replicação contínua do stream e snapshot horário das gravações. DNS redireciona se o local cair.</p></div>
+      <div class="card reveal"><div class="ico">📱</div><span class="tag">Player</span><h3>Web otimizado</h3><p>Celular e desktop. Chat em tempo real priorizado. Sem tela preta. Recupera sozinho se a conexão oscilar.</p></div>
+      <div class="card reveal"><div class="ico">📊</div><span class="tag">Monitoramento</span><h3>Dashboard</h3><p>Visão em tempo real para a equipe do colégio: alunos conectados, qualidade, quedas.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- MODELO -->
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="k">03 · Modelo comercial</div>
+      <h2>Mínimo mensal + por aluno</h2>
+      <p>O piso cobre a infraestrutura. Em cima, vocês crescem junto com a gente.</p>
+    </div>
+    <div class="price-grid reveal">
+      <div class="price-main">
+        <div class="big">R$ 7.800 <small>/mês</small></div>
+        <p style="color:var(--mute);margin-top:6px">Mínimo mensal — cobre o custo de infraestrutura (servidor, storage, banda, licenças).</p>
+        <ul>
+          <li><span>Piso equivalente a</span><b>1.000 alunos ativos</b></li>
+          <li><span>Taxa por aluno acima do piso</span><b>R$ 5 a R$ 10</b></li>
+          <li><span>Com 3.000 alunos</span><b>~ R$ 24.000/mês</b></li>
+          <li><span>Investimento inicial (hardware)</span><b>~ R$ 78.000</b></li>
+          <li><span>Payback vs. Spalla</span><b>menos de 1 ano</b></li>
+        </ul>
+      </div>
+      <div class="price-side">
+        <div class="card"><h3>Por que esse modelo</h3><p>Vocês não arriscam valor fixo alto se a matrícula oscilar. A gente nunca fica no vermelho. Cresce junto.</p></div>
+        <div class="card"><h3>Regra de cobrança</h3><p>Cobrança por aluno ativo no dia. Sem churn surpresa: mínimo garantido mesmo em mês ruim.</p></div>
+        <div class="card"><h3>Comparativo</h3><p>Hoje: Spalla cobra por aluno + revenue share, sem controle. Aqui: plataforma própria, margem saudável, entrega de verdade.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CRONOGRAMA -->
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="k">04 · Cronograma</div>
+      <h2>Do zero ao go-live</h2>
+    </div>
+    <ol class="steps reveal">
+      <li><div><b>MVP funcional</b><span>10 a 15 dias. Ingest, origin, player e gravação rodando.</span></div></li>
+      <li><div><b>Teste com turma piloto</b><span>Mais 5 dias. Uma turma real valida a experiência.</span></div></li>
+      <li><div><b>Ajustes e polimento</b><span>Mais 5 dias. Analytics, dashboard, multi-tenant.</span></div></li>
+      <li><div><b>Go-live completo</b><span>Cerca de 25 dias no total. Todas as turmas no ar.</span></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- FECHO -->
+<section>
+  <div class="wrap" style="text-align:center">
+    <div class="reveal">
+      <span class="kicker" style="justify-content:center">Próximo passo</span>
+      <h2 style="font-size:clamp(28px,4vw,44px)">Piloto em 15 dias.<br>Aula que não trava.</h2>
+      <p class="lede" style="margin:16px auto 28px">A plataforma roda no datacenter do Grupo Jet. Fibra de sobra, backbone redundante, Fortinet. Nada de depender de plataforma genérica de terceiros.</p>
+      <div class="actions" style="justify-content:center">
+        <button class="cta" onclick="togglePlay()">▶ Ouvir a narração completa</button>
+        <a class="cta ghost" href="mailto:contato@grupojet.com.br?subject=Proposta%20WR%20At%20Home">Falar com o time</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>Grupo Jet · Conectividade e infraestrutura própria para educação.</div>
+    <div>Proposta confidencial · 2026</div>
+  </div>
+</footer>
+
+<!-- PLAYER FIXO -->
+<div class="player" id="player">
+  <button class="play" id="playBtn" onclick="togglePlay()">▶</button>
+  <div class="info">
+    <div class="t">Narração · Proposta WR At Home</div>
+    <div class="s" id="status">Pronto para tocar</div>
+  </div>
+  <div class="bar" id="bar" onclick="seek(event)"><i id="fill"></i></div>
+  <div class="time" id="time">0:00 / 0:00</div>
+</div>
+
+<audio id="audio" preload="metadata" src="https://cdn.kairogen.ai/audio-generations/6a9f53f0283c2ce5cb1b23c5/6ab15bcb79777cb49531d9e4/speech.mp3"></audio>
+
+<script>
+const audio=document.getElementById('audio');
+const playBtn=document.getElementById('playBtn');
+const fill=document.getElementById('fill');
+const bar=document.getElementById('bar');
+const timeEl=document.getElementById('time');
+const statusEl=document.getElementById('status');
+let dur=0;
+function fmt(s){if(!s||isNaN(s))return'0:00';const m=Math.floor(s/60);const x=Math.floor(s%60);return m+':'+String(x).padStart(2,'0');}
+function togglePlay(){if(audio.paused){audio.play();playBtn.textContent='⏸';statusEl.textContent='Reproduzindo…';}else{audio.pause();playBtn.textContent='▶';statusEl.textContent='Pausado';}}
+audio.addEventListener('loadedmetadata',()=>{dur=audio.duration;timeEl.textContent='0:00 / '+fmt(dur);});
+audio.addEventListener('timeupdate',()=>{if(dur){fill.style.width=(audio.currentTime/dur*100)+'%';timeEl.textContent=fmt(audio.currentTime)+' / '+fmt(dur);}});
+audio.addEventListener('ended',()=>{playBtn.textContent='▶';statusEl.textContent='Fim da narração';fill.style.width='0';});
+function seek(e){const r=bar.getBoundingClientRect();const p=(e.clientX-r.left)/r.width;if(dur)audio.currentTime=p*dur;}
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
